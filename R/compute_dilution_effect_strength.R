@@ -20,11 +20,11 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
   correlation <- cor(tauvec[seq(m+1, m+n)], Nvec[seq(m+1, m+n)])
 
   res <- setNames(
-    data.frame(matrix(NA_real_, ncol = 2, nrow = 10)),
+    data.frame(matrix(NA_real_, ncol = 2, nrow = n)),
     c("nspecies", "Imax")
   )
 
-  for (i in seq_len(10)) {
+  for (i in seq_len(n)) {
 
     N <- c(Nm, Nr[seq(i, n)])
     tau <- c(tauM, tauvec[seq(m+i, m+n)])
