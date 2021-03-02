@@ -30,7 +30,7 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
     tau <- c(tauM, tauvec[seq(m+i, m+n)])
     ni <- n - i+1
 
-    res$nbspecies[i] <- ni
+    res$nspecies[i] <- ni
 
     b <- c(
       rep_len(365/30, length.out = m),
@@ -45,10 +45,10 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
 
     phi <- matrix(0, nrow = m+ni, ncol = m+ni)
 
-     for (i in seq_len(m)) {
-       for (j in seq_len(ni)) {
-         phi[i, m+j] <- 365/20
-         phi[m + j, i] <- 365/20
+     for (p in seq_len(m)) {
+       for (q in seq_len(ni)) {
+         phi[p, m+q] <- 365/20
+         phi[m+q, p] <- 365/20
        }
      }
 
@@ -74,7 +74,7 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
 
   }
 
-  slope <- lm(Imax ~ nspecies, data = res)
+  slope <- coef(lm(Imax ~ nspecies, data = res))["nspecies"]
 
   return(c(correlation, slope))
 
