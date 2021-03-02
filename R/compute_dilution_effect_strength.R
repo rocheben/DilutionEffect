@@ -19,17 +19,6 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
 
   correlation <- cor(tauvec[seq(m+1, m+n)], Nvec[seq(m+1, m+n)])
 
-  b <- c(
-    rep_len(365/30, length.out = m),
-    rep_len(1/4, length.out = n)
-  )
-  d <- b
-
-  sigma <- c(
-    rep_len(0, length.out = m),
-    rep_len(365/7, length.out = n)
-  )
-
   res <- setNames(
     data.frame(matrix(NA_real_, ncol = 2, nrow = 10)),
     c("nspecies", "Imax")
@@ -42,6 +31,17 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
     ni <- n - i+1
 
     res$nbspecies[i] <- ni
+
+    b <- c(
+      rep_len(365/30, length.out = m),
+      rep_len(1/4, length.out = ni)
+    )
+    d <- b
+
+    sigma <- c(
+      rep_len(0, length.out = m),
+      rep_len(365/7, length.out = ni)
+    )
 
     phi <- matrix(0, nrow = m+ni, ncol = m+ni)
 
