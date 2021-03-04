@@ -1,13 +1,12 @@
 #' @param m Number of vector species
 #' @param n Number of reservoir species
-#' @param ... Additional params.
 #'
 #' @example
 #' compute_dilution_effect_strength(
-#'   m = 3, n = 3, N = rep_len(100, 6)
+#'   m = 10, n = 10
 #' )
 
-compute_dilution_effect_strength <- function(m, n, N, ...) {
+compute_dilution_effect_strength <- function(m, n) {
 
   Nr <- seq(100, 10000, length.out = n)
   Nm <- rep_len(100000, length.out = m)
@@ -64,8 +63,8 @@ compute_dilution_effect_strength <- function(m, n, N, ...) {
     names(RInit) <- paste0("R_", seq_along(RInit))
 
     resi <- deSolve::ode(
-      c(SInit, RInit, IInit),
-      times = seq_len(10),
+      c(SInit, IInit, RInit),
+      times = seq_len(100),
       func = run_step_SIR_multihosts,
       parms = list("tau" = tau, "b" = b, "d" = d, "sigma" = sigma, "phi" = phi, "Nspecies" = m + ni, "alpha" = 0.1)
     )
