@@ -18,9 +18,9 @@ run_step_SIR_multihosts <- function(t, state, parameters) {
 
   with(as.list(parameters), {
     ### create state matrices
-    S <- matrix(state[grepl("^S_", names(state))], ncol = Nspecies)
-    I <- matrix(state[grepl("^I_", names(state))], ncol = Nspecies)
-    R <- matrix(state[grepl("^R_", names(state))], ncol = Nspecies)
+    S <- matrix(state[grepl("^S_", names(state))], nrow = 1)
+    I <- matrix(state[grepl("^I_", names(state))], nrow = 1)
+    R <- matrix(state[grepl("^R_", names(state))], nrow = 1)
 
     N <- S + I + R
 
