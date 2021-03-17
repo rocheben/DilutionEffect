@@ -14,6 +14,7 @@
 #' SEIR system, as needed for [deSolve::ode()]
 #'
 #' @export
+#'
 run_step_SIR_multihosts <- function(t, state, parameters) {
 
   with(as.list(parameters), {

@@ -12,6 +12,8 @@
 #'   sigma = 0.5, alpha = 0.5
 #' )
 #'
+#' @export
+#'
 get_max_infected <- function(m, n, N, phi_intra, phi_inter, ...) {
 
   SInit <- rep_len(N, m+n)
