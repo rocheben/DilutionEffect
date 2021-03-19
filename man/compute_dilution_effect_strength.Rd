@@ -17,11 +17,12 @@ compute_dilution_effect_strength(m, nmax, ...)
 Compute effect of increasing number of reservoir species
 }
 \examples{
-compute_dilution_effect_strength(
-  m = 10, nmax = 100, N = 10e5,
+eff <- compute_dilution_effect_strength(
+  m = 10, nmax = 100, N = 1e5,
   tau = 0.5, phi_intra = 1/2, phi_inter = 1/4,
   b = 0.2, d = 0.2,
   sigma = 0.5, alpha = 0.9
 )
+plot(eff, type = "l")
 
 }
