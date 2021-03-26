@@ -14,7 +14,7 @@
 #'
 #' @export
 #'
-compute_dilution_effect_strength <- function(m, nmax, ...) {
+compute_dilution_effect_strength <- function(m = 10, nmax = 20, ...) {
 
   res <- setNames(
     data.frame(matrix(NA_real_, ncol = 2, nrow = nmax)),

@@ -14,7 +14,7 @@
 #'
 #' @export
 #'
-get_max_infected <- function(m, n, N, phi_intra, phi_inter, ...) {
+get_max_infected <- function(m, n, N = 1e4, phi_intra, phi_inter, ...) {
 
   SInit <- rep_len(N, m+n)
   SInit[1] <- SInit[1]-1
