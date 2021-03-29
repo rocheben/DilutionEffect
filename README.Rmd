@@ -20,6 +20,6 @@ knitr::opts_chunk$set(
 
 ## Usage
 
-```{r example}
+```{r, eval = FALSE}
 targets::tar_make_future(workers = parallelly::availableCores())
 ```
