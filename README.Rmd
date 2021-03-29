@@ -18,17 +18,8 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-## Installation
-
-You can the latest version of this package from GitHub with:
-
-```{r, eval = FALSE}
-# install.packages("remotes")
-remotes::install_github("")
-```
-
 ## Usage
 
 ```{r example}
-library()
+targets::tar_make_future(workers = parallelly::availableCores())
 ```
